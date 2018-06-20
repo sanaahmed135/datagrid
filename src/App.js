@@ -24,18 +24,20 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID',
-        headerEvents:{
-          onClick:()=>alert('Click on Product ID header column')
-        }
+        text: 'Product ID'
 
       }, {
         dataField: 'name',
-        text: 'Product Name'
+        text: 'Product Name',
+        headerClasses: 'demo-row-odd'
       },
       {
         dataField:'price',
-        text: 'Product Price'
+        text: 'Product Price',
+        headerClasses: (column, colIndex) => {
+          if (colIndex % 2 === 0) return 'demo-row-even';
+          return 'demo-row-odd';
+        }
 
       }
     ]
