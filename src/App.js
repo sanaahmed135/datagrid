@@ -33,10 +33,11 @@ class App extends Component {
       }, {
         dataField: 'name',
         text: 'Product Name',
-        align:(cell,row,rowIndex,colIndex)=>{
-          if(rowIndex % 2 === 0) return 'right';
-          return 'left';
-        }
+        title:(cell,row,rowIndex,colIndex)=>`this is custom title for ${cell}`
+        // align:(cell,row,rowIndex,colIndex)=>{
+        //   if(rowIndex % 2 === 0) return 'right';
+        //   return 'left';
+        // }
       },
       {
         dataField:'price',
