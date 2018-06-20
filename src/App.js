@@ -17,10 +17,10 @@ class App extends Component {
     }
     const products=[
       {
-        id:1, name:'Sana',rank:2100
+        id:1, name:'Sana',price:2100
       },
       {
-        id:2, name:'Saad',rank:2104
+        id:2, name:'Saad',price:2104
       }
     ];
 
@@ -28,20 +28,29 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID'
+        text: 'Product ID',
+        align: 'center'
       }, {
         dataField: 'name',
-        text: 'Product Name'
+        text: 'Product Name',
+        align:(cell,row,rowIndex,colIndex)=>{
+          if(rowIndex % 2 === 0) return 'right';
+          return 'left';
+        }
       },
       {
-        dataField: 'rank',
-        text: 'Rank',
-        formatter: rankFormatter,
-        formatExtraData: {
-          up: 'glyphicon glyphicon-chevron-up',
-          down: 'glyphicon glyphicon-chevron-down'
+        dataField:'price',
+        text: 'Product Price'
       }
-      }];
+      // {
+      //   dataField: 'rank',
+      //   text: 'Rank',
+      //   formatter: rankFormatter,
+      //   formatExtraData: {
+      //     up: 'glyphicon glyphicon-chevron-up',
+      //     down: 'glyphicon glyphicon-chevron-down'
+      // }
+];
       
     return (
       <div>
