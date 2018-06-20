@@ -3,7 +3,7 @@ import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { productsGenerator } from '../node_modules/util';
 import './react-bootstrap-table2.min.css';
-//import filterFactory,{textFilter} from 'react-bootstrap-table2-filter'
+import filterFactory,{textFilter} from 'react-bootstrap-table2-filter'
 //import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 class App extends Component {
@@ -24,18 +24,18 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID',
-        headerAttrs: { title: 'ID header column' }
+        text: 'Product ID'
 
       }, {
         dataField: 'name',
         text: 'Product Name',
-        headerAttrs: (column, colIndex) => ({ 'data-test': `customized data ${colIndex}` })
+        filter: textFilter()
 
       },
       {
         dataField:'price',
-        text: 'Product Price'
+        text: 'Product Price',
+        filter:textFilter()
       
 
       }
