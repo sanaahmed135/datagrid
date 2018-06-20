@@ -29,14 +29,35 @@ class App extends Component {
       {
         dataField: 'id',
         text: 'Product ID',
-        align: 'center',
-        events:{
-          onClick:()=> alert('Click on Product ID field')
+        // align: 'center',
+        style: {
+          fontWeight: 'bold',
+          fontSize: '18px'
         }
+        // events:{
+        //   onClick:()=> alert('Click on Product ID field')
+        // },
+        // classes:'demo-key-row'
       }, {
         dataField: 'name',
         text: 'Product Name',
-        title:(cell,row,rowIndex,colIndex)=>`this is custom title for ${cell}`
+        title:(cell,row,rowIndex,colIndex)=>`this is custom title for ${cell}`,
+        style: (cell, row, rowIndex, colIndex) => {
+          if (rowIndex % 2 === 0) {
+            return {
+              backgroundColor: '#81c784'
+            };
+          }
+          return {
+            backgroundColor: '#c8e6c9'
+          };
+        }
+
+        // classes: (cell, row, rowIndex, colIndex) => {
+        //   if (rowIndex % 2 === 0) return 'demo-row-even';
+        //   return 'demo-row-odd';
+        // }
+      
         // align:(cell,row,rowIndex,colIndex)=>{
         //   if(rowIndex % 2 === 0) return 'right';
         //   return 'left';
