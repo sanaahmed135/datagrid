@@ -3,7 +3,7 @@ import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { productsGenerator } from '../node_modules/util';
 import './react-bootstrap-table2.min.css';
-import filterFactory,{textFilter} from 'react-bootstrap-table2-filter'
+import filterFactory,{textFilter,Comparator} from 'react-bootstrap-table2-filter'
 //import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 class App extends Component {
@@ -29,15 +29,16 @@ class App extends Component {
       }, {
         dataField: 'name',
         text: 'Product Name',
-        filter: textFilter()
+        filter: textFilter({
+          comparator: Comparator.EQ
+
+        })
 
       },
       {
         dataField:'price',
         text: 'Product Price',
-        filter:textFilter({
-          defaultValue:'2104'
-        })
+        filter:textFilter()
       }
     ]
       
