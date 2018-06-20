@@ -29,7 +29,8 @@ class App extends Component {
       {
         dataField: 'id',
         text: 'Product ID',
-        align: 'center'
+        align: 'center',
+        hidden:true
       }, {
         dataField: 'name',
         text: 'Product Name',
