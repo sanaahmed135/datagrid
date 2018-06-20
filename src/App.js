@@ -8,12 +8,15 @@ import './react-bootstrap-table2.min.css'
 class App extends Component {
   
   render() {
-    function rankFormatter(cell, row, rowIndex, formatExtraData) {
-    //  console.log( rowIndex)
-    //  console.log(formatExtraData[0]);
-      return (
-        <i className={ formatExtraData[cell] }></i>
-      );
+    // function rankFormatter(cell, row, rowIndex, formatExtraData) {
+    //   return (
+    //     <i className={ formatExtraData[cell] }></i>
+    //   );
+    // }
+    function priceFormatter(column,colIndex){
+      return(
+        <h5><strong>$$ {column.text} $$</strong></h5>
+      )
     }
     const products=[
       {
@@ -28,12 +31,14 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID',
+        text: 'Product ID'
+
+        // attrs:{title:'id column'}
         // align: 'center',
-        style: {
-          fontWeight: 'bold',
-          fontSize: '18px'
-        }
+        // style: {
+        //   fontWeight: 'bold',
+        //   fontSize: '18px'
+        // }
         // events:{
         //   onClick:()=> alert('Click on Product ID field')
         // },
@@ -41,17 +46,18 @@ class App extends Component {
       }, {
         dataField: 'name',
         text: 'Product Name',
-        title:(cell,row,rowIndex,colIndex)=>`this is custom title for ${cell}`,
-        style: (cell, row, rowIndex, colIndex) => {
-          if (rowIndex % 2 === 0) {
-            return {
-              backgroundColor: '#81c784'
-            };
-          }
-          return {
-            backgroundColor: '#c8e6c9'
-          };
-        }
+        // attrs: (cell,row,rowIndex,colIndex)=>({'data-test':`customized data ${rowIndex}`})
+        // title:(cell,row,rowIndex,colIndex)=>`this is custom title for ${cell}`,
+        // style: (cell, row, rowIndex, colIndex) => {
+        //   if (rowIndex % 2 === 0) {
+        //     return {
+        //       backgroundColor: '#81c784'
+        //     };
+        //   }
+        //   return {
+        //     backgroundColor: '#c8e6c9'
+        //   };
+        // }
 
         // classes: (cell, row, rowIndex, colIndex) => {
         //   if (rowIndex % 2 === 0) return 'demo-row-even';
@@ -65,7 +71,8 @@ class App extends Component {
       },
       {
         dataField:'price',
-        text: 'Product Price'
+        text: 'Product Price',
+        headerFormatter:priceFormatter
       }
       // {
       //   dataField: 'rank',
