@@ -30,7 +30,9 @@ class App extends Component {
         dataField: 'id',
         text: 'Product ID',
         align: 'center',
-        hidden:true
+        events:{
+          onClick:()=> alert('Click on Product ID field')
+        }
       }, {
         dataField: 'name',
         text: 'Product Name',
