@@ -25,12 +25,12 @@ class App extends Component {
       {
         dataField: 'id',
         text: 'Product ID',
-        headerAlign:'center'
+        headerTitle:true
 
       }, {
         dataField: 'name',
         text: 'Product Name',
-        headerAlign:(column,colIndex)=>'right'
+        headerTitle:(column,colIndex)=>`this is custom title for ${column.text}`
       },
       {
         dataField:'price',
