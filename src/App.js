@@ -25,12 +25,13 @@ class App extends Component {
       {
         dataField: 'id',
         text: 'Product ID',
-        headerTitle:true
+        headerEvents:{
+          onClick:()=>alert('Click on Product ID header column')
+        }
 
       }, {
         dataField: 'name',
-        text: 'Product Name',
-        headerTitle:(column,colIndex)=>`this is custom title for ${column.text}`
+        text: 'Product Name'
       },
       {
         dataField:'price',
