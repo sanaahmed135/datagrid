@@ -24,28 +24,18 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID'
+        text: 'Product ID',
+        headerAttrs: { title: 'ID header column' }
 
       }, {
         dataField: 'name',
         text: 'Product Name',
-        headerStyle: {
-          backgroundColor: '#c8e6c9'
-        }
+        headerAttrs: (column, colIndex) => ({ 'data-test': `customized data ${colIndex}` })
+
       },
       {
         dataField:'price',
-        text: 'Product Price',
-        headerStyle: (column, colIndex) => {
-          if (colIndex % 2 === 0) {
-            return {
-              backgroundColor: '#81c784'
-            };
-          }
-          return {
-            backgroundColor: '#c8e6c9'
-          };
-        }
+        text: 'Product Price'
       
 
       }
