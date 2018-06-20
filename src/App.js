@@ -35,9 +35,9 @@ class App extends Component {
       {
         dataField:'price',
         text: 'Product Price',
-        filter:textFilter()
-      
-
+        filter:textFilter({
+          defaultValue:'2104'
+        })
       }
     ]
       
@@ -47,6 +47,7 @@ class App extends Component {
             keyField="id"
             data={ products }
             columns={ columns }
+            filter={filterFactory()}
           />
       </div>
     );
