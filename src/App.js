@@ -3,22 +3,14 @@ import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { productsGenerator } from '../node_modules/util';
 import './react-bootstrap-table2.min.css';
-import filterFactory,{textFilter} from 'react-bootstrap-table2-filter'
+//import filterFactory,{textFilter} from 'react-bootstrap-table2-filter'
 //import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 class App extends Component {
   
   render() {
 
-    function priceFormatter(column,colIndex,{sortElement,filterElement}){
-      return(
-        <div style={{display:'flex',flexDirection:'column'}}>
-          { filterElement }
-          { column.text }
-          { sortElement }
-        </div>
-      )
-    }
+
     const products=[
       {
         id:1, name:'Sana',price:2100
@@ -32,20 +24,18 @@ class App extends Component {
       // omit...
       {
         dataField: 'id',
-        text: 'Product ID'
-
+        text: 'Product ID',
+        headerAlign:'center'
 
       }, {
         dataField: 'name',
         text: 'Product Name',
-
+        headerAlign:(column,colIndex)=>'right'
       },
       {
         dataField:'price',
-        text: 'Product Price',
-        sort: true,
-        filter: textFilter(),
-        headerFormatter:priceFormatter
+        text: 'Product Price'
+
       }
     ]
       
@@ -55,8 +45,6 @@ class App extends Component {
             keyField="id"
             data={ products }
             columns={ columns }
-            filter={ filterFactory() }
-
           />
       </div>
     );
