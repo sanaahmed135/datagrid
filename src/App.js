@@ -29,15 +29,24 @@ class App extends Component {
       }, {
         dataField: 'name',
         text: 'Product Name',
-        headerClasses: 'demo-row-odd'
+        headerStyle: {
+          backgroundColor: '#c8e6c9'
+        }
       },
       {
         dataField:'price',
         text: 'Product Price',
-        headerClasses: (column, colIndex) => {
-          if (colIndex % 2 === 0) return 'demo-row-even';
-          return 'demo-row-odd';
+        headerStyle: (column, colIndex) => {
+          if (colIndex % 2 === 0) {
+            return {
+              backgroundColor: '#81c784'
+            };
+          }
+          return {
+            backgroundColor: '#c8e6c9'
+          };
         }
+      
 
       }
     ]
