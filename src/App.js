@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import './react-bootstrap-table2.min.css';
-import filterFactory, { selectFilter } from 'react-bootstrap-table2-filter';
+import filterFactory, { selectFilter, Comparator } from 'react-bootstrap-table2-filter';
 
 class App extends Component { 
   render() {
     const selectOptions = {
-      0: 'Good',
-      1: 'Bad',
-      2: 'unknown'
+      '03': '03',
+      '04': '04',
+      '01': '01'
     };
 
     const products=[{
-        id:1, name:'Sana',quality:'Bad'
+        id:1, name:'Sana',quality:'01'
       },
       {
-        id:2, name:'Saad',quality:'Good'
+        id:2, name:'Saad',quality:'02'
       },
       {
-        id:3, name:'Sarah',quality:'unknown'
+        id:3, name:'Sarah',quality:'04'
       }
     ];
 
@@ -32,10 +32,10 @@ class App extends Component {
     }, {
       dataField: 'quality',
       text: 'Product Quailty',
-      formatExtraData: (cell)=> selectOptions[cell],
-      //formatter: (cell)=> selectOptions[cell],
       filter: selectFilter({
-        options: selectOptions
+        options: selectOptions,
+        comparator: Comparator.LIKE
+
       })
     }];
       
