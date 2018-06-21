@@ -2,34 +2,56 @@ import React, { Component } from 'react';
 import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import './react-bootstrap-table2.min.css';
-import filterFactory, { dateFilter, Comparator} from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter} from 'react-bootstrap-table2-filter';
 
 class App extends Component { 
   render() {
+    const owners = {
+        0: 'Allen', 
+        1: 'Bob', 
+        2:'Cat'};
+
+    const types = [
+      'Cloud Service',
+      'Message Service',
+      'Add Service',
+      'Edit Service',
+      'Money'];
 
     const products=[{
-        id:1, name:'Sana',inStockDate:'02.05.2018'
+        id:1, name:'IT',owner:1,type:'Cloud Service'
       },
       {
-        id:2, name:'Saad',inStockDate:'31.05.1989'
+        id:2, name:'Vertrieb',owner:0,type:'Add Service'
       },
       {
-        id:3, name:'Sarah',inStockDate:'11.09.2014'
+        id:3, name:'BI',owner:2,type:'Edit Service'
+      },
+      {
+        id:4, name:'Support',owner:1,type:'Message Service'
       }
+
     ];
 
     const columns = [{
       dataField: 'id',
-      text: 'Product ID'
+      text: 'Job ID'
     }, {
       dataField: 'name',
-      text: 'Product Name'
+      text: 'Job Name',
+      filter: textFilter()
+
     }, {
-      dataField: 'inStockDate',
-      text: 'InStock Date',
-      filter: dateFilter({
-        defaultValue: { date: new Date(2018, 0, 1), comparator: Comparator.GT }
-      })
+      dataField: 'owner',
+      text: 'Job Owner',
+      filter: textFilter(),
+      formatter: (cell, row) => owners[cell],
+      filterValue: (cell, row) => owners[cell]
+    }, {
+      dataField: 'type',
+      text: 'Job Type',
+      filter: textFilter(),
+      filterValue: (cell, row) => types[cell]
     }];
       
     return (
