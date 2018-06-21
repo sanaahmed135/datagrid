@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import './react-bootstrap-table2.min.css';
-import filterFactory, { selectFilter, Comparator } from 'react-bootstrap-table2-filter';
+import filterFactory, { numberFilter,Comparator } from 'react-bootstrap-table2-filter';
 
 class App extends Component { 
   render() {
@@ -32,10 +32,8 @@ class App extends Component {
     }, {
       dataField: 'quality',
       text: 'Product Quailty',
-      filter: selectFilter({
-        options: selectOptions,
-        comparator: Comparator.LIKE
-
+      filter: numberFilter({
+        defaultValue:{number:'02',comparator:Comparator.GT}
       })
     }];
       
