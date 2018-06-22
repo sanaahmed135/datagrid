@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import './react-bootstrap-table2.min.css';
-import filterFactory, { numberFilter, Comparator} from 'react-bootstrap-table2-filter';
+import cellEditFactory from 'react-bootstrap-table2-editor';
+// import filterFactory, { numberFilter, Comparator} from 'react-bootstrap-table2-filter';
 
 
 class App extends Component { 
   render() {
 
-    let priceFilter;
     const products=[{
         id:1, name:'Item name 1',price:2101
       },
@@ -24,35 +24,33 @@ class App extends Component {
 
     ];
 
-    const columns = [{
-      dataField: 'id',
-      text: 'Product ID'
-    }, {
+    const columns = [ {
       dataField: 'name',
-      text: 'Product Name'
+      text: 'Product Name',
+      sort: true,
+      headerSortingClasses
     }, {
       dataField: 'price',
-      text: 'Product Price',
-      filter: numberFilter({
-        getFilter: (filter) => {
-          // pricerFilter was assigned once the component has been mounted.
-          priceFilter = filter;
-        }
-      })
+      text: 'Product Price'
+    },{
+      dataField: 'id',
+      text: 'Product ID',
+      sort: true,
+      headerSortingClasses
+    
     }];
 
-    const handleClick = () => {
-      priceFilter({
-        number:2103,
-        comparator:Comparator.GT
-      });
-    };
+    // const defaultSorted=[{
+    //   dataField:'name',
+    //   order:'desc'
+    // }];
+
     return (
       <div>
-          <button className="btn btn-lg btn-primary" onClick={handleClick}>filter all columns which is greater than 2103</button>
           <BootstrapTable keyField='id' 
           data={ products } columns={ columns } 
-          filter={ filterFactory() } />
+          cellEdit={ cellEditFactory({ mode: 'click' }) }
+           />
       </div>
     );
   }
