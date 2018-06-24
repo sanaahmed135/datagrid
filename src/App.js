@@ -16,7 +16,7 @@ class App extends Component {
         id:2, name:'Item name 2',price:2103
       },
       {
-        id:3, name:'Item name 3',price:2100
+        id:3, name:'Item name 3',price:2200
       },
       {
         id:4, name:'Item name 4',price:2102
